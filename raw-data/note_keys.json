@@ -1,0 +1,14 @@
+{
+  "*": {
+    "description": "indicates that a wage estimate is not available"
+  },
+  "**": {
+    "description": "indicates that an employment estimate is not available"
+  },
+  "#": {
+    "description": "indicates a wage greater than or equal to $90.00 per hour or $187"
+  },
+  "~": {
+    "description": "indicates that the percent of establishments reporting the occupation is less than 0.5%"
+  }
+}
