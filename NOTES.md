@@ -9,6 +9,9 @@ Goal here: To create a web-calculator interface that explores the cost of living
 
 County-specific numbers available in quarterly census of employment and wages (QCEW), looks like, though I'm not sure what the difference in the numbers is - See http://data.bls.gov/cew/apps/data_views/data_views.htm
 
+## Tech stact
+- Create react app + react-bootstrap
+
 ## References
 - BLS API info http://www.bls.gov/developers/ (I'm currently just using a static downtload from SW Montana link above)
 - BLS API Series ID formats - http://www.bls.gov/help/hlpforma.htm#OE
@@ -48,3 +51,7 @@ Single adult needs a $21,570 living wage
 --> Food service, A_MEDIAN=$19,360 & A_PCT75=$23,580, so between half and a quarter of food service workers make a living wage for a single adult
 
 Logic: Take living wage, set bins by A10,A25,A50,A75,A90, figure out which bin living wage fits into --> return appropriate description
+
+Components:
+- Table
+- Vertical visualization

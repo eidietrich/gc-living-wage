@@ -1,0 +1,134 @@
+{
+  "1 Adult": {
+    "Food": "3594",
+    "Child Care": "0",
+    "Medical": "1932",
+    "Housing": "6828",
+    "Transportation": "3885",
+    "Other": "2237",
+    "Required pre-tax income": "18476",
+    "Annual taxes": "3095",
+    "Required post-tax income": "21570"
+  },
+  "1 Adult 1 Child": {
+    "Food": "5289",
+    "Child Care": "6858",
+    "Medical": "6009",
+    "Housing": "9252",
+    "Transportation": "7669",
+    "Other": "4059",
+    "Required pre-tax income": "39135",
+    "Annual taxes": "7211",
+    "Required post-tax income": "46346"
+  },
+  "1 Adult 2 Children": {
+    "Food": "7939",
+    "Child Care": "13666",
+    "Medical": "5810",
+    "Housing": "9252",
+    "Transportation": "8690",
+    "Other": "4880",
+    "Required pre-tax income": "50236",
+    "Annual taxes": "9419",
+    "Required post-tax income": "59655"
+  },
+  "1 Adult 3 Children": {
+    "Food": "10543",
+    "Child Care": "20474",
+    "Medical": "5778",
+    "Housing": "13632",
+    "Transportation": "10235",
+    "Other": "5514",
+    "Required pre-tax income": "66176",
+    "Annual taxes": "12532",
+    "Required post-tax income": "78708"
+  },
+  "2 Adults (1 Working)": {
+    "Food": "6589",
+    "Child Care": "0",
+    "Medical": "4787",
+    "Housing": "7380",
+    "Transportation": "7669",
+    "Other": "4059",
+    "Required pre-tax income": "30484",
+    "Annual taxes": "5485",
+    "Required post-tax income": "35969"
+  },
+  "2 Adults (1 Working) 1 Child": {
+    "Food": "8193",
+    "Child Care": "0",
+    "Medical": "5810",
+    "Housing": "9252",
+    "Transportation": "8690",
+    "Other": "4880",
+    "Required pre-tax income": "36824",
+    "Annual taxes": "6751",
+    "Required post-tax income": "43575"
+  },
+  "2 Adults (1 Working) 2 Children": {
+    "Food": "10556",
+    "Child Care": "0",
+    "Medical": "5778",
+    "Housing": "9252",
+    "Transportation": "10235",
+    "Other": "5514",
+    "Required pre-tax income": "41334",
+    "Annual taxes": "7648",
+    "Required post-tax income": "48983"
+  },
+  "2 Adults (1 Working) 3 Children": {
+    "Food": "12862",
+    "Child Care": "0",
+    "Medical": "5893",
+    "Housing": "13632",
+    "Transportation": "10331",
+    "Other": "5225",
+    "Required pre-tax income": "47943",
+    "Annual taxes": "8905",
+    "Required post-tax income": "56848"
+  },
+  "2 Adults": {
+    "Food": "6589",
+    "Child Care": "0",
+    "Medical": "4787",
+    "Housing": "7380",
+    "Transportation": "7669",
+    "Other": "4059",
+    "Required pre-tax income": "30484",
+    "Annual taxes": "5485",
+    "Required post-tax income": "35969"
+  },
+  "2 Adults 1 Child": {
+    "Food": "8193",
+    "Child Care": "6858",
+    "Medical": "5810",
+    "Housing": "9252",
+    "Transportation": "8690",
+    "Other": "4880",
+    "Required pre-tax income": "43682",
+    "Annual taxes": "8115",
+    "Required post-tax income": "51797"
+  },
+  "2 Adults 2 Children": {
+    "Food": "10556",
+    "Child Care": "13666",
+    "Medical": "5778",
+    "Housing": "9252",
+    "Transportation": "10235",
+    "Other": "5514",
+    "Required pre-tax income": "55001",
+    "Annual taxes": "10366",
+    "Required post-tax income": "65367"
+  },
+  "2 Adults 3 Children": {
+    "Food": "12862",
+    "Child Care": "20474",
+    "Medical": "5893",
+    "Housing": "13632",
+    "Transportation": "10331",
+    "Other": "5225",
+    "Required pre-tax income": "68417",
+    "Annual taxes": "12977",
+    "Required post-tax income": "81394"
+  }
+}
