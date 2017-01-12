@@ -19,6 +19,10 @@ County-specific numbers available in quarterly census of employment and wages (Q
 ## TODO
 - Download/scrape MIT Living wage estimates for particular county - set up a script to do this
 - Decide: Calculator versus Stepped/scrolled story (start by building calculator, find a story, then set up narrative --> interactive)
+- For table responsiveness - cut down on number of columns, flip worker number into occupation tab
+- Untangle coordination between CostContainer and WageContainer so living wage updates flow downward in calculator
+- Change dropdown menu on profession selector to a link-based system
+- 
 
 
 ## Outline:
