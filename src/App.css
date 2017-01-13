@@ -4,7 +4,6 @@
 }
 
 table {
-  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -21,26 +20,93 @@ p {
   text-align: center;
 }
 
+/* Family size selection button group */
+
+div.family-button-bar-container{
+  text-align: center;
+}
+
+.family-button-bar {
+  /*margin: auto;*/
+}
+
+.family-button {
+  height: 40px;
+}
+
+img.family-icon {
+  height: 25px;
+  width: 25px;
+  pointer-events: none; /* Prevents interference with button click handling */
+}
+
+
+/* Other stuff */
+
 .dynamic-text {
   font-weight: bold;
 }
 
+th {
+  padding-left: 4px;
+}
+
+tr {
+  vertical-align: middle;
+}
+
+
+/* Icons */
+img.stat-icon path, img.family-icon path {
+  fill: red;
+}
+
+/*td.col-salary, td.monthly-cost, td.annual-cost {
+  color: #666;
+}*/
+
+.col-label {
+  width: 40%;
+}
+
+.col-salary {
+  width: 20%;
+  text-align: center;
+}
 
 td.col-salary {
+  text-align: center;
+  padding-right: 4px;
+
+}
+
+
+
+/* Cost table */
+.cost-table {
+  max-width: 400px;
+}
+
+.cost-table tbody tr:last-child {
+  font-weight: bold;
+}
+
+td.cost-label {
+  padding-left: 4px;
+}
+
+.cost-monthly, .cost-annual {
   text-align: right;
   padding-right: 4px;
 }
 
-td.monthly-cost, td.annual-cost {
-  text-align: right;
-  padding-right: 4px;
-}
+
+/* Wage table highlighting */
 
 span.legend {
   padding: 5px 5px;
 }
 
-/* Table highlighting */
 td.above-threshold, span.legend.above-threshold {
   background-color: #dff0d8;
 }
