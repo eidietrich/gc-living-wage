@@ -1,0 +1,122 @@
+{
+  "1 Adult": {
+    "Food": "3594",
+    "Child Care": "0",
+    "Medical": "1932",
+    "Housing": "6828",
+    "Transportation": "3885",
+    "Other": "2237",
+    "Taxes": "3095",
+    "Total": "21570"
+  },
+  "1 Adult 1 Child": {
+    "Food": "5289",
+    "Child Care": "6858",
+    "Medical": "6009",
+    "Housing": "9252",
+    "Transportation": "7669",
+    "Other": "4059",
+    "Taxes": "7211",
+    "Total": "46346"
+  },
+  "1 Adult 2 Children": {
+    "Food": "7939",
+    "Child Care": "13666",
+    "Medical": "5810",
+    "Housing": "9252",
+    "Transportation": "8690",
+    "Other": "4880",
+    "Taxes": "9419",
+    "Total": "59655"
+  },
+  "1 Adult 3 Children": {
+    "Food": "10543",
+    "Child Care": "20474",
+    "Medical": "5778",
+    "Housing": "13632",
+    "Transportation": "10235",
+    "Other": "5514",
+    "Taxes": "12532",
+    "Total": "78708"
+  },
+  "2 Adults (1 Working)": {
+    "Food": "6589",
+    "Child Care": "0",
+    "Medical": "4787",
+    "Housing": "7380",
+    "Transportation": "7669",
+    "Other": "4059",
+    "Taxes": "5485",
+    "Total": "35969"
+  },
+  "2 Adults (1 Working) 1 Child": {
+    "Food": "8193",
+    "Child Care": "0",
+    "Medical": "5810",
+    "Housing": "9252",
+    "Transportation": "8690",
+    "Other": "4880",
+    "Taxes": "6751",
+    "Total": "43575"
+  },
+  "2 Adults (1 Working) 2 Children": {
+    "Food": "10556",
+    "Child Care": "0",
+    "Medical": "5778",
+    "Housing": "9252",
+    "Transportation": "10235",
+    "Other": "5514",
+    "Taxes": "7648",
+    "Total": "48983"
+  },
+  "2 Adults (1 Working) 3 Children": {
+    "Food": "12862",
+    "Child Care": "0",
+    "Medical": "5893",
+    "Housing": "13632",
+    "Transportation": "10331",
+    "Other": "5225",
+    "Taxes": "8905",
+    "Total": "56848"
+  },
+  "2 Adults (2 Working)": {
+    "Food": "6589",
+    "Child Care": "0",
+    "Medical": "4787",
+    "Housing": "7380",
+    "Transportation": "7669",
+    "Other": "4059",
+    "Taxes": "5485",
+    "Total": "35969"
+  },
+  "2 Adults (2 Working) 1 Child": {
+    "Food": "8193",
+    "Child Care": "6858",
+    "Medical": "5810",
+    "Housing": "9252",
+    "Transportation": "8690",
+    "Other": "4880",
+    "Taxes": "8115",
+    "Total": "51797"
+  },
+  "2 Adults (2 Working) 2 Children": {
+    "Food": "10556",
+    "Child Care": "13666",
+    "Medical": "5778",
+    "Housing": "9252",
+    "Transportation": "10235",
+    "Other": "5514",
+    "Taxes": "10366",
+    "Total": "65367"
+  },
+  "2 Adults (2 Working) 3 Children": {
+    "Food": "12862",
+    "Child Care": "20474",
+    "Medical": "5893",
+    "Housing": "13632",
+    "Transportation": "10331",
+    "Other": "5225",
+    "Taxes": "12977",
+    "Total": "81394"
+  }
+}

@@ -17,13 +17,14 @@ h3 {
 }
 
 p {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 /* Family size selection button group */
 
 div.family-button-bar-container{
   text-align: center;
+  margin: 0 0 10px;
 }
 
 .family-button-bar {
@@ -72,12 +73,11 @@ img.stat-icon path, img.family-icon path {
 .col-salary {
   width: 20%;
   text-align: center;
+  /*padding-right: 4px;*/
 }
 
-td.col-salary {
-  text-align: center;
-  padding-right: 4px;
-
+.col-salary.median {
+  font-weight: bold;
 }
 
 
@@ -102,6 +102,14 @@ td.cost-label {
 
 
 /* Wage table highlighting */
+
+.wage-box {
+  text-align: center;
+}
+
+.legend {
+  text-align: center;
+}
 
 span.legend {
   padding: 5px 5px;

@@ -21,7 +21,10 @@ County-specific numbers available in quarterly census of employment and wages (Q
 - Decide: Calculator versus Stepped/scrolled story (start by building calculator, find a story, then set up narrative --> interactive)
 - Change dropdown menu on profession selector to a link-based system
 - Add toggle between annual and hourly rates?
-- Changes (after showing it to Troy) --> Retitle protective services, healthcare support. Spell out MIT. Figure out how to explain occupation labels more.
+- Think about ways to explain healthcare more
+- Changes (after showing it to Troy) --> Retitle protective services, healthcare support. Figure out how to explain occupation labels more.
+
+- Add popup to industry labels showing professions
 
 
 ## Outline:
