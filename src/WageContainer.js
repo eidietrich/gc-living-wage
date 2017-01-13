@@ -143,7 +143,7 @@ var WageContainer = React.createClass({
       <div>
         <p>Typical salary ranges for different industries in Bozeman, based on U.S. Bureau of Labor Statistics data:</p>
         <p className="legend">
-          <span className="legend above-threshold">At or above a <span className="dynamic-text">{annualFormat(this.props.highlightThreshold)}</span> living wage</span>/
+          <span className="legend above-threshold">At or above a <span className="dynamic-text">{annualFormat(this.props.highlightThreshold)}</span> annual wage</span>/
           <span className="legend below-threshold">Below it</span>
         </p>
         <WageTable

@@ -16,6 +16,12 @@ h3 {
   text-align: center;
 }
 
+/* Table header */
+h4 {
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
 p {
   /*text-align: center;*/
 }

@@ -89,15 +89,14 @@ var WageTable = React.createClass({
     let displayHeaders = (
       <thead>
         <tr>
-          <th>Industry</th>
-          <th colSpan="3">Typical salary range</th>
+          <th><h4>Job type</h4></th>
+          <th colSpan="3"><h4>Typical salary range</h4></th>
         </tr>
         <tr>
-          <th>
-          </th>
-          <th className="col-salary">Lower pay</th>
-          <th className="col-salary">Median pay</th>
-          <th className="col-salary">Higher pay</th>
+          <td></td>
+          <td className="col-salary">Low</td>
+          <td className="col-salary">Median</td>
+          <td className="col-salary">High</td>
         </tr>
       </thead>
     );
