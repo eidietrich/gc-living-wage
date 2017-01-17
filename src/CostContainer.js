@@ -38,7 +38,6 @@ var CostContainer = React.createClass({
           focusFamilySize={this.props.focusFamilySize}
 
           setFocusFamilySize={this.props.setFocusFamilySize}/>
-        <p>For Gallatin County, a <span className="dynamic-text">{label}</span> household has these expenses, according to MIT's <a href="http://livingwage.mit.edu/counties/30031">living wage calculator</a>:</p>
 
         <CostTable data={data} />
 

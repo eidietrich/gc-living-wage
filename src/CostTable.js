@@ -50,6 +50,7 @@ var CostTable = React.createClass({
 
     return (
       <div>
+        <p>In Gallatin County, a <a href="http://livingwage.mit.edu/counties/30031">study by MIT</a> estimates that a <span className="dynamic-text">{tableData.label}</span> has these expenses:</p>
         <table className="table cost-table">
           <thead>{tableHeaders}</thead>
           <tbody>{tableRows}</tbody>
