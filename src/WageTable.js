@@ -1,49 +1,26 @@
-// React component for rendering json object --> react-bootstrap table
 // Assumes value keys in colKeys are present in every row in data
 
-// TODO: Add formating here
-// Classes - row-label,
-
-// Inputs -
-
 import React from 'react';
-import {format} from 'd3-format';
 
-import firstQuartile from './icons/one-of-four.svg';
-import median from './icons/two-of-four.svg';
-import thirdQuartile from './icons/three-of-four.svg';
+import {annualFormat, hourlyFormat} from './helpers.js'
 
-// TODO: Add handling for null values -- currently returning '$'
-// var salaryFormat = format('$,');
-
+const HOURS_PER_YEAR = 2080;
 const NULL_DISPLAY = '-';
-var empNumFormat = format(',');
-var salaryFormat = function(value){
+const colKeys = ['A_PCT25','A_MEDIAN','A_PCT75'];
+
+var salaryFormat = function(value, wageDisplay){
   if (value === null) {
     return NULL_DISPLAY;
   } else {
-    return format('$,')(value);
+    if (wageDisplay == 'hourly'){
+      return hourlyFormat(value);
+    } else if (wageDisplay == 'annual') {
+      return annualFormat(value);
+    } else {
+      throw "invalid wageDisplay value" + wageDisplay;
+      return null;
+    }
   }
-}
-
-var colKeys = {
-  // 'A_PCT10': {
-  //   colClassName: 'col-salary',
-  //   displayName: '10th percentile salary',
-  // },
-  'A_PCT25': {
-    colClassName: 'col-salary',
-  },
-  'A_MEDIAN': {
-    colClassName: 'col-salary',
-  },
-  'A_PCT75': {
-    colClassName: 'col-salary',
-  },
-  // 'A_PCT90': {
-  //   colClassName: 'col-salary',
-  //   displayName: '90th percentile salary',
-  // },
 }
 
 var WageTable = React.createClass({
@@ -84,13 +61,15 @@ var WageTable = React.createClass({
     let that = this;
 
     let tableData = this.parseData(this.props.data);
-    let headers = Object.keys(colKeys); // Doesn't include row label cols
+    let headers = colKeys;
+
+    let displayFactor = this.props.wageDisplay === 'hourly' ? HOURS_PER_YEAR : 1;
 
     let displayHeaders = (
       <thead>
         <tr>
           <th><h4>Job type</h4></th>
-          <th colSpan="3"><h4>Typical salary range</h4></th>
+          <th colSpan="3"><h4>Typical pay range</h4></th>
         </tr>
         <tr>
           <td></td>
@@ -112,7 +91,7 @@ var WageTable = React.createClass({
         if (isMedian) { cellClass += ' median'; }
         return (
           <td key={colKey} className={cellClass}>
-            {salaryFormat(cellValue)}
+            {salaryFormat(cellValue / displayFactor, that.props.wageDisplay)}
           </td>
         );
       })
@@ -126,7 +105,6 @@ var WageTable = React.createClass({
           {displayHeaders}
           <tbody>{displayRows}</tbody>
         </table>
-        <p className="small"> Notes: Half of workers in a field make more than median pay, half make less. "Lower pay" represents the first quartile salary, where a quarter of workers in a field make less and three-quarters make more. "Higher pay" represents the third quartile salary, where a quarter of workers make more and three-quarters make less. Data represents the May 2015 BLS <a href="https://www.bls.gov/oes/current/oes_3000003.htm">Area Occupational Employment and Wage Estimates</a> for the Southwest Montana nonmetropolitan area.</p>
       </div>
     );
   }

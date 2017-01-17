@@ -47,6 +47,13 @@ img.family-icon {
   pointer-events: none; /* Prevents interference with button click handling */
 }
 
+/* Wage display control */
+
+div.wage-display-control-container {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
 
 /* Other stuff */
 
@@ -87,7 +94,6 @@ img.stat-icon path, img.family-icon path {
 }
 
 
-
 /* Cost table */
 .cost-table {
   max-width: 400px;
@@ -122,10 +128,12 @@ span.legend {
 }
 
 td.above-threshold, span.legend.above-threshold {
-  background-color: #dff0d8;
+  background-color: #abd9e9;
+
 }
 td.below-threshold, span.legend.below-threshold{
-  background-color: #f2dede;
+  background-color: #fdae61;
+
 }
 td.null-value {
   background-color: #eee;

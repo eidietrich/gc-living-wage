@@ -9,21 +9,22 @@ Goal here: To create a web-calculator interface that explores the cost of living
 
 County-specific numbers available in quarterly census of employment and wages (QCEW), looks like, though I'm not sure what the difference in the numbers is - See http://data.bls.gov/cew/apps/data_views/data_views.htm
 
-## Tech stact
+## Tech stack
 - Create react app + react-bootstrap
 
 ## References
 - BLS API info http://www.bls.gov/developers/ (I'm currently just using a static downtload from SW Montana link above)
 - BLS API Series ID formats - http://www.bls.gov/help/hlpforma.htm#OE
 
+## PRIORITY TODO
+- Allow interactive costs (add 'edit' icon)
+- "More" --> 'view list' icon
+- Clean up family names
+
 ## TODO
 - Download/scrape MIT Living wage estimates for particular county - set up a script to do this
 - Decide: Calculator versus Stepped/scrolled story (start by building calculator, find a story, then set up narrative --> interactive)
-- Change dropdown menu on profession selector to a link-based system
-- Add toggle between annual and hourly rates?
-- Think about ways to explain healthcare more
-- Changes (after showing it to Troy) --> Retitle protective services, healthcare support. Figure out how to explain occupation labels more.
-
+- Change dropdown menu on profession selector to a link-based system (took out dropdown already)
 - Add popup to industry labels showing professions
 
 

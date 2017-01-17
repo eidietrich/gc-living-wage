@@ -3,12 +3,16 @@
 
 import React from 'react';
 
+// import {annualFormat} from './helpers.js';
+
+import WageLegend from './WageLegend.js';
 import WageTable from './WageTable.js';
+import WageDisplayControl from './WageDisplayControl.js';
 // import NumberForm from './NumberForm.js';
 // import DropdownForm from './DropdownForm.js';
 
-import {format} from 'd3-format';
-const annualFormat = format('$,.0f'); // TODO: REDUNDANT
+// import {format} from 'd3-format';
+// const annualFormat = format('$,.0f'); // TODO: REDUNDANT
 
 var filterToMajorGroups = function(row) { return row['OCC_GROUP'] === 'major'; };
 var filterToMajorGroup = function(id){
@@ -117,7 +121,8 @@ var WageContainer = React.createClass({
     return {
       focusCategory: 'Occupation Types',
       rowFilterFunction: filterToMajorGroups,
-      tableSortKey: 'A_MEDIAN'
+      tableSortKey: 'A_MEDIAN',
+      wageDisplay: 'annual'
     }
   },
   handleDropdownSelect: function(e) {
@@ -134,26 +139,37 @@ var WageContainer = React.createClass({
       rowFilterFunction: filterFunction
     });
   },
+  handleWageDisplayChange: function(newWageDisplay){
+    this.setState({
+      wageDisplay: newWageDisplay
+    });
+  },
   render: function(){
     let formOptions = jobCategories.map(function(category){
       return category.label;
     });
 
-    return (
+    let wageContainerDisplay = (
       <div>
         <p>Typical salary ranges for different industries in Bozeman, based on U.S. Bureau of Labor Statistics data:</p>
-        <p className="legend">
-          <span className="legend above-threshold">At or above a <span className="dynamic-text">{annualFormat(this.props.highlightThreshold)}</span> annual wage</span>/
-          <span className="legend below-threshold">Below it</span>
-        </p>
+        <WageLegend
+          highlightThreshold={this.props.highlightThreshold}
+          wageDisplay={this.state.wageDisplay} />
         <WageTable
           data={this.props.data}
           highlightThreshold={this.props.highlightThreshold}
           rowFilterFunction={this.state.rowFilterFunction}
           sortKey={this.state.tableSortKey}
+          wageDisplay={this.state.wageDisplay}
           handleFocusCatChange={this.handleFocusCatChange} />
+        <WageDisplayControl
+          wageDisplay={this.state.wageDisplay}
+          handleWageDisplayChange={this.handleWageDisplayChange}/>
+        <p className="small"> Notes: Half of workers in a field make more than median pay, half make less. "Low" end of range represents the first quartile salary, where a quarter of workers in a field make less and three-quarters make more. "Higher" represents the third quartile salary, where a quarter of workers make more and three-quarters make less. Data represents the May 2015 BLS <a href="https://www.bls.gov/oes/current/oes_3000003.htm">Area Occupational Employment and Wage Estimates</a> for the Southwest Montana nonmetropolitan area.</p>
       </div>
+
     )
+    return wageContainerDisplay;
   }
 });
 

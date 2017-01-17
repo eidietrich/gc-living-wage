@@ -1,15 +1,19 @@
 import React from 'react';
 
+// Icons
 import singleAdult from './icons/single-adult.svg';
 import dualAdult from './icons/dual-adult.svg';
 import dualAdultTwoKids from './icons/dual-adult-two-kids.svg';
-import singleAdultTwoKids from './icons/one-adult-two-kids.svg';
 import singleAdultOneKid from './icons/one-adult-one-kid.svg';
+import menuIcon from './icons/menu.svg';
+import editIcon from './icons/edit.svg';
+
+import {sentenceCase} from './helpers.js';
 
 import {ButtonGroup, Button, DropdownButton, MenuItem} from 'react-bootstrap';
 
 // Family size categories to include in the icon bar
-var iconBarItems = [
+const iconBarItems = [
   {
     'key': '1 Adult',
     'icon': singleAdult,
@@ -58,31 +62,53 @@ var FamilyButtonBar = React.createClass({
       );
     });
 
+    let menuImg = (
+      <img
+        className="family-icon"
+        src={menuIcon}
+      />
+    );
+
+    let editButton = (
+      <Button
+        className={"family-button"}>
+        <img className="family-icon" src={editIcon} />
+      </Button>
+    );
+
     let dropdownItems = this.props.familySizes.map(function(item){
+      // console.log(item);
+      // console.log(that.props.familySizeLabels);
+      // console.log(that.props.familySizeLabels[item].label);
       return (
-        <MenuItem key={item} value={item}
+        <MenuItem
+          className="family-dropdown-item"
+          key={item}
+          value={item}
           onClick={that.handleButtonClick}>
-          {item}
+          {sentenceCase(that.props.familySizeLabels[item].label)}
         </MenuItem>
       );
     });
 
-    let buttonGroup = (
-      <ButtonGroup
-        className="family-button-bar">
-        {iconButtons}
-        <DropdownButton pullRight
-          className="family-button"
-          title="Other"
-          id="bg-nested-dropdown" >
-          {dropdownItems}
-        </DropdownButton>
-      </ButtonGroup>
+    let dropdownButton = (
+      <DropdownButton pullRight
+        className="family-button"
+        title={menuImg}
+        noCaret={true}
+        id="bg-nested-dropdown" >
+        {dropdownItems}
+      </DropdownButton>
     );
 
     return (
       <div className="family-button-bar-container">
-        {buttonGroup}
+        <ButtonGroup
+          className="family-button-bar">
+          {iconButtons}
+          {editButton}
+          {dropdownButton}
+        </ButtonGroup>
       </div>
     );
 

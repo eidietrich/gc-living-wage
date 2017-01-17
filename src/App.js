@@ -2,38 +2,53 @@ import React from 'react';
 
 import './App.css';
 
-import WageContainer from './WageContainer.js';
 import CostContainer from './CostContainer.js';
+import WageContainer from './WageContainer.js';
 
-import wageData from './../data/sw-mt-wages-hand-cleaned.json';
 import costData from './../data/mit-living-expenses-hand-cleaned.json'
+import wageData from './../data/sw-mt-wages-hand-cleaned.json';
 
-// let familySize = "1 Adult";
-// let costData = mitLiving[familySize];
 
+
+// Controls display order independently of source data
 const familySizes = [
   "1 Adult", "1 Adult 1 Child", "1 Adult 2 Children", "1 Adult 3 Children",
   "2 Adults (2 Working)", "2 Adults (2 Working) 1 Child", "2 Adults (2 Working) 2 Children", "2 Adults (2 Working) 3 Children",
   "2 Adults (1 Working)", "2 Adults (1 Working) 1 Child", "2 Adults (1 Working) 2 Children", "2 Adults (1 Working) 3 Children",
 ];
+const initFamilyIndex = 6;
 
-const DUAL_INCOMES =  ["2 Adults (2 Working)", "2 Adults  (2 Working) 1 Child", "2 Adults (2 Working) 2 Children", "2 Adults (2 Working) 3 Children"] // Hacky -- TODO: Consolidate this sort of data
+const familySizeLabels = {};
+familySizes.forEach(function(key){
+  familySizeLabels[key] = {
+    'label': costData[key].label
+  }
+});
+
+// TODO: Refactor so state stores a focusFamily data object, not its various components
 
 var App = React.createClass({
   getInitialState: function(){
+    let initialFocusFamilyKey = familySizes[initFamilyIndex];
+    let initialFocusFamilyData = costData[initialFocusFamilyKey];
+    let initialLivingWage = initialFocusFamilyData['total_expenses'] /initialFocusFamilyData['num_incomes'];
     return {
-      focusFamilySize: familySizes[6],
-      numIncomes: 2,
-      livingWage: 32684,
+      focusFamilyKey: initialFocusFamilyKey,
+      focusFamilyData: initialFocusFamilyData,
+      livingWage: initialLivingWage,
+      numIncomes: initialFocusFamilyData['num_incomes'],
     }
   },
-  setFocusFamilySize: function(newFocusFamilySize){
-    console.log(newFocusFamilySize);
-    let newLivingWage = costData[newFocusFamilySize]['Total'];
-    let newNumIncomes = (DUAL_INCOMES.indexOf(newFocusFamilySize) >= 0) ? 2 : 1;
+  setFocusFamilySize: function(newFocusFamilyKey){
+    let newFocusFamily = costData[newFocusFamilyKey];
+    let newLivingCost =  newFocusFamily['total_expenses'];
+    let newNumIncomes = newFocusFamily['num_incomes'];
+    let newLivingWage = newLivingCost / newNumIncomes;
     this.setState({
-      focusFamilySize: newFocusFamilySize,
-      livingWage: newLivingWage / newNumIncomes,
+      focusFamilyKey: newFocusFamilyKey,
+      focusFamilyData: newFocusFamily,
+      livingWage: newLivingWage,
+
       numIncomes: newNumIncomes,
     });
   },
@@ -42,10 +57,13 @@ var App = React.createClass({
       <div className="App container">
         <h2>What is a living wage in Bozeman?</h2>
         <CostContainer
-          data={costData}
+          focusFamilySize={this.state.focusFamilyKey}
+          familySizeData={this.state.focusFamilyData}
           familySizes={familySizes}
-          focusFamilySize={this.state.focusFamilySize}
+          familySizeLabels={familySizeLabels}
+
           numIncomes={this.state.numIncomes}
+
           setFocusFamilySize={this.setFocusFamilySize} />
         <hr />
         <h2>And who actually makes it?</h2>

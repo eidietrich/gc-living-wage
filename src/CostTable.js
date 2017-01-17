@@ -1,13 +1,13 @@
 import React from 'react';
-import {format} from 'd3-format';
 
-const annualFormat = format('$,.0f');
+import {annualFormat} from './helpers.js';
 
 const MONTHS_PER_YEAR = 12;
 
 var CostTable = React.createClass({
   render: function(){
     let tableData = this.props.data; // cost data
+    let expenses = tableData.expenses;
     // let headers = ['Expense', 'A month', 'A year'];
     //
 
@@ -23,9 +23,9 @@ var CostTable = React.createClass({
       </tr>
     )
 
-    let tableRows = Object.keys(tableData).map(function(label){
-      let annualCost = tableData[label];
-      let monthlyCost = tableData[label] / MONTHS_PER_YEAR;
+    let tableRows = Object.keys(expenses).map(function(label){
+      let annualCost = expenses[label];
+      let monthlyCost = expenses[label] / MONTHS_PER_YEAR;
       return (
         <tr key={label}>
           <td className="cost-label">{label}</td>
@@ -34,6 +34,19 @@ var CostTable = React.createClass({
         </tr>
       );
     });
+
+    // Add total row
+    let annualTotal = tableData.total_expenses;
+    let monthlyTotal = tableData.total_expenses / MONTHS_PER_YEAR;
+
+
+    tableRows.push(
+      <tr key={'total'}>
+        <td className="cost-label">Total</td>
+        <td className="cost-monthly">{annualFormat(annualTotal)}</td>
+        <td className="cost-annual">{annualFormat(monthlyTotal)}</td>
+      </tr>
+    );
 
     return (
       <div>
