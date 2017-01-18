@@ -50,7 +50,7 @@ var CostContainer = React.createClass({
 
     return (
       <div>
-        <p>It depends, in part, on the size of family you're trying to support:</p>
+        <p>It depends on the size of family you're trying to support, as well as how many adults are working. Researchers at MIT, though, <a href="http://livingwage.mit.edu/counties/30031">have estimated</a> cost of living figures for a variety of family arrangements.</p>
         {controlBar}
         {this.props.customCosts ? customCostTable : presetCostTable}
         <div className="wage-box">

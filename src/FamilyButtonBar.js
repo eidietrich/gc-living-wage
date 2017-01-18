@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Tooltip, OverlayTrigger} from 'react-bootstrap';
+
 // Icons
 import singleAdult from './icons/single-adult.svg';
 import dualAdult from './icons/dual-adult.svg';
@@ -17,22 +19,26 @@ const iconBarItems = [
   {
     'key': '1 Adult',
     'icon': singleAdult,
-    'label': 'Single adult'
+    'label': 'Single adult',
+    'tooltip': (<Tooltip id="1-adult-tooltip">Single adult</Tooltip>)
   },
   {
     'key': '2 Adults (2 Working)',
     'icon': dualAdult,
-    'label': 'Childless couple'
+    'label': 'Childless couple',
+    'tooltip': (<Tooltip id="1-adult-tooltip">Childless couple</Tooltip>)
   },
   {
     'key': '2 Adults (2 Working) 2 Children',
     'icon': dualAdultTwoKids,
-    'label': 'Couple, two kids'
+    'label': 'Couple, two kids',
+    'tooltip': (<Tooltip id="1-adult-tooltip">Working couple with two kids</Tooltip>)
   },
   {
     'key': '1 Adult 1 Child',
     'icon': singleAdultOneKid,
-    'label': 'Single parent, one kid'
+    'label': 'Single parent, one kid',
+    'tooltip': (<Tooltip id="1-adult-tooltip">Single parent with one kid</Tooltip>)
   },
 ];
 
@@ -45,44 +51,56 @@ var FamilyButtonBar = React.createClass({
     this.props.setCustomCosts(null);
   },
   render: function(){
-    let that = this;
+    const that = this;
 
-    let iconButtons = iconBarItems.map(function(item){
+    const iconButtons = iconBarItems.map(function(item){
       let isActive = (item.key === that.props.focusFamilySize);
       let activeClass = isActive ? ' active' : '';
+
       return (
-        <Button
-          className={"family-button" + activeClass}
-          key={item.key}
-          value={item.key}
-          onClick={that.handleButtonClick} >
-          <img
-            className="family-icon"
-            src={item.icon}
-            alt={item.label} />
-        </Button>
+        <OverlayTrigger placement="top" overlay={item.tooltip}>
+          <Button
+            className={"family-button" + activeClass}
+            key={item.key}
+            value={item.key}
+            onClick={that.handleButtonClick} >
+            <img
+              className="family-icon"
+              src={item.icon}
+              alt={item.label} />
+          </Button>
+        </OverlayTrigger>
       );
     });
 
-    let menuImg = (
+    // Edit/custom button
+    const editTooltip = (
+      <Tooltip id="edit-tooltip">Enter custom costs</Tooltip>
+    );
+    let isActive = ('custom' === this.props.focusFamilySize)
+    let activeClass = isActive ? ' active' : '';
+    const editButton = (
+      <OverlayTrigger placement="top" overlay={editTooltip}>
+        <Button
+          className={"family-button" + activeClass}
+          onClick={this.handleEditButtonClick}>
+          <img className="family-icon" src={editIcon} alt="custom" />
+        </Button>
+      </OverlayTrigger>
+    );
+
+    // Dropdown menu button
+    const dropdownTooltip = (
+      <Tooltip id="dropdown-tooltip">More family sizes</Tooltip>
+    );
+    const menuImg = (
       <img
         className="family-icon"
         src={menuIcon}
         alt="menu"
       />
     );
-
-    let isActive = ('custom' === this.props.focusFamilySize)
-    let activeClass = isActive ? ' active' : '';
-    let editButton = (
-      <Button
-        className={"family-button" + activeClass}
-        onClick={this.handleEditButtonClick}>
-        <img className="family-icon" src={editIcon} alt="edit" />
-      </Button>
-    );
-
-    let dropdownItems = this.props.familySizes.map(function(item){
+    const dropdownItems = this.props.familySizes.map(function(item){
       return (
           <MenuItem
             className="family-dropdown-item"
@@ -93,15 +111,16 @@ var FamilyButtonBar = React.createClass({
           </MenuItem>
       );
     });
-
-    let dropdownButton = (
-      <DropdownButton pullRight
-        className="family-button"
-        title={menuImg}
-        noCaret={true}
-        id="bg-nested-dropdown" >
-        {dropdownItems}
-      </DropdownButton>
+    const dropdownButton = (
+      <OverlayTrigger placement="top" overlay={dropdownTooltip}>
+        <DropdownButton pullRight
+          className="family-button"
+          title={menuImg}
+          noCaret={true}
+          id="bg-nested-dropdown" >
+          {dropdownItems}
+        </DropdownButton>
+      </OverlayTrigger>
     );
 
     return (

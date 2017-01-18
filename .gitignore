@@ -4,4 +4,5 @@
 *.sublime-project
 *.sublime-workspace
 
+obsolete
 node_modules

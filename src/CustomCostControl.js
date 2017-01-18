@@ -21,8 +21,6 @@ var CustomCostControl = React.createClass({
   render: function(){
     let that = this;
 
-    console.log('button', this.props.numIncomes);
-
     let buttons = menuItems.map(function(item){
       let isActive = (+item.key === +that.props.numIncomes);
       let activeClass = isActive ? ' active': '';
