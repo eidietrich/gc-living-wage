@@ -1,23 +1,21 @@
 import React from 'react';
-import {format} from 'd3-format';
 
-import {annualFormat, hourlyFormat} from './helpers.js';
+import {annualFormat, hourlyFormat, objectSum} from './helpers.js';
 
 import CostTable from './CostTable.js';
-import DropdownForm from './DropdownForm.js';
+import CustomCostTable from './CustomCostTable.js';
 import FamilyButtonBar from './FamilyButtonBar.js';
 
 const HOURS_PER_YEAR = 2080;
 
 var CostContainer = React.createClass({
   render: function(){
-    // let size = this.props.focusFamilySize;
     let data = this.props.familySizeData;
 
     let costs = data.expenses;
-    let total_costs = data.total_expenses;
+    // let totalCosts = data.total_expenses;
+    let totalCosts = objectSum(costs);
     let numIncomes = data.num_incomes;
-    let label = data.label;
 
     let numIncomesText = "T";
     if (numIncomes === 1) {
@@ -26,21 +24,35 @@ var CostContainer = React.createClass({
       numIncomesText = "With two wage earners, t"
     }
 
-    let livingAnnualWage = total_costs / numIncomes;
+    let livingAnnualWage = totalCosts / numIncomes;
     let livingHourlyWage = livingAnnualWage / HOURS_PER_YEAR;
+
+    const controlBar = (
+      <FamilyButtonBar
+        familySizes={this.props.familySizes}
+        familySizeLabels={this.props.familySizeLabels}
+        focusFamilySize={this.props.focusFamilySize}
+
+        setFocusFamilySize={this.props.setFocusFamilySize}
+        setCustomCosts={this.props.setCustomCosts}
+      />
+    );
+
+    const presetCostTable = (
+      <CostTable data={data} />
+    );
+    const customCostTable = (
+      <CustomCostTable
+        data={data}
+        setCustomCosts={this.props.setCustomCosts}
+      />
+    );
 
     return (
       <div>
         <p>It depends, in part, on the size of family you're trying to support:</p>
-        <FamilyButtonBar
-          familySizes={this.props.familySizes}
-          familySizeLabels={this.props.familySizeLabels}
-          focusFamilySize={this.props.focusFamilySize}
-
-          setFocusFamilySize={this.props.setFocusFamilySize}/>
-
-        <CostTable data={data} />
-
+        {controlBar}
+        {this.props.customCosts ? customCostTable : presetCostTable}
         <div className="wage-box">
           <p>{numIncomesText}hat equates to a living wage of:</p>
           <h3>{annualFormat(livingAnnualWage)} <small>a year</small></h3>

@@ -28,8 +28,6 @@ var WageLegend = React.createClass({
           {type.label}
         </span>
       );
-    } else {
-      throw 'bad wageDisplay';
     }
   },
   render: function(){

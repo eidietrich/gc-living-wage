@@ -12,12 +12,11 @@ var salaryFormat = function(value, wageDisplay){
   if (value === null) {
     return NULL_DISPLAY;
   } else {
-    if (wageDisplay == 'hourly'){
+    if (wageDisplay === 'hourly'){
       return hourlyFormat(value);
-    } else if (wageDisplay == 'annual') {
+    } else if (wageDisplay === 'annual') {
       return annualFormat(value);
     } else {
-      throw "invalid wageDisplay value" + wageDisplay;
       return null;
     }
   }

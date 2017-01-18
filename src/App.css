@@ -33,13 +33,16 @@ div.family-button-bar-container{
   margin: 0 0 10px;
 }
 
-.family-button-bar {
+.family-button-bar button, .family-button-bar div {
   /*margin: auto;*/
+  height: 40px;
+  width: 45px;
+  padding: 0;
 }
 
-.family-button {
+/*.family-button {
   height: 40px;
-}
+}*/
 
 img.family-icon {
   height: 25px;
@@ -54,6 +57,18 @@ div.wage-display-control-container {
   margin: 0 0 10px;
 }
 
+/* Custom table forms */
+input.form-control {
+  text-align: right;
+}
+span.input-group {
+  max-width: 100px;
+  float: right;
+}
+
+.custom-total {
+  padding-right: 12px;
+}
 
 /* Other stuff */
 
@@ -69,11 +84,6 @@ tr {
   vertical-align: middle;
 }
 
-
-/* Icons */
-img.stat-icon path, img.family-icon path {
-  fill: red;
-}
 
 /*td.col-salary, td.monthly-cost, td.annual-cost {
   color: #666;

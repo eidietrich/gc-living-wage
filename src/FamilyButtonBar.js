@@ -41,8 +41,10 @@ var FamilyButtonBar = React.createClass({
     let value = e.target.getAttribute('value');
     this.props.setFocusFamilySize(value);
   },
+  handleEditButtonClick: function(e){
+    this.props.setCustomCosts(null);
+  },
   render: function(){
-
     let that = this;
 
     let iconButtons = iconBarItems.map(function(item){
@@ -66,28 +68,29 @@ var FamilyButtonBar = React.createClass({
       <img
         className="family-icon"
         src={menuIcon}
+        alt="menu"
       />
     );
 
+    let isActive = ('custom' === this.props.focusFamilySize)
+    let activeClass = isActive ? ' active' : '';
     let editButton = (
       <Button
-        className={"family-button"}>
-        <img className="family-icon" src={editIcon} />
+        className={"family-button" + activeClass}
+        onClick={this.handleEditButtonClick}>
+        <img className="family-icon" src={editIcon} alt="edit" />
       </Button>
     );
 
     let dropdownItems = this.props.familySizes.map(function(item){
-      // console.log(item);
-      // console.log(that.props.familySizeLabels);
-      // console.log(that.props.familySizeLabels[item].label);
       return (
-        <MenuItem
-          className="family-dropdown-item"
-          key={item}
-          value={item}
-          onClick={that.handleButtonClick}>
-          {sentenceCase(that.props.familySizeLabels[item].label)}
-        </MenuItem>
+          <MenuItem
+            className="family-dropdown-item"
+            key={item}
+            value={item}
+            onClick={that.handleButtonClick}>
+            {sentenceCase(that.props.familySizeLabels[item].label)}
+          </MenuItem>
       );
     });
 

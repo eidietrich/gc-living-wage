@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ButtonGroup, Button, MenuItem} from 'react-bootstrap';
+import {ButtonGroup, Button} from 'react-bootstrap';
 
 const menuItems = [
   {

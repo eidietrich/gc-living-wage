@@ -5,6 +5,8 @@ import './App.css';
 import CostContainer from './CostContainer.js';
 import WageContainer from './WageContainer.js';
 
+import {objectSum} from './helpers.js';
+
 import costData from './../data/mit-living-expenses-hand-cleaned.json'
 import wageData from './../data/sw-mt-wages-hand-cleaned.json';
 
@@ -31,25 +33,41 @@ var App = React.createClass({
   getInitialState: function(){
     let initialFocusFamilyKey = familySizes[initFamilyIndex];
     let initialFocusFamilyData = costData[initialFocusFamilyKey];
-    let initialLivingWage = initialFocusFamilyData['total_expenses'] /initialFocusFamilyData['num_incomes'];
+    let initialLivingWage = objectSum(initialFocusFamilyData.expenses) / initialFocusFamilyData['num_incomes'];
     return {
       focusFamilyKey: initialFocusFamilyKey,
       focusFamilyData: initialFocusFamilyData,
       livingWage: initialLivingWage,
-      numIncomes: initialFocusFamilyData['num_incomes'],
+      customCosts: false
     }
   },
   setFocusFamilySize: function(newFocusFamilyKey){
-    let newFocusFamily = costData[newFocusFamilyKey];
-    let newLivingCost =  newFocusFamily['total_expenses'];
-    let newNumIncomes = newFocusFamily['num_incomes'];
+    // Triggered by FamilyButtonBar selections
+    let newFocusFamilyData = costData[newFocusFamilyKey];
+
+    let newLivingCost =  objectSum(newFocusFamilyData.expenses);
+    let newNumIncomes = newFocusFamilyData['num_incomes'];
     let newLivingWage = newLivingCost / newNumIncomes;
     this.setState({
       focusFamilyKey: newFocusFamilyKey,
-      focusFamilyData: newFocusFamily,
+      focusFamilyData: newFocusFamilyData,
       livingWage: newLivingWage,
+      customCosts: false,
+    });
+  },
+  setCustomCosts: function(newCostData){
+    // This is triggered both by edit icon in FamilyButtonBar
+    // also changes to forms in CustomCostTable
+    let newFocusFamilyData = newCostData || this.state.focusFamilyData;
 
-      numIncomes: newNumIncomes,
+    let newLivingCost =  objectSum(newFocusFamilyData.expenses);
+    let newNumIncomes = newFocusFamilyData['num_incomes'];
+    let newLivingWage = newLivingCost / newNumIncomes;
+    this.setState({
+      customCosts: true,
+      focusFamilyKey: 'custom',
+      focusFamilyData: newFocusFamilyData,
+      livingWage: newLivingWage
     });
   },
   render: function() {
@@ -59,12 +77,13 @@ var App = React.createClass({
         <CostContainer
           focusFamilySize={this.state.focusFamilyKey}
           familySizeData={this.state.focusFamilyData}
+          customCosts={this.state.customCosts}
+
           familySizes={familySizes}
           familySizeLabels={familySizeLabels}
 
-          numIncomes={this.state.numIncomes}
-
-          setFocusFamilySize={this.setFocusFamilySize} />
+          setFocusFamilySize={this.setFocusFamilySize}
+          setCustomCosts={this.setCustomCosts} />
         <hr />
         <h2>And who actually makes it?</h2>
         <WageContainer

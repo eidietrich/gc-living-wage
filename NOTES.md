@@ -18,8 +18,10 @@ County-specific numbers available in quarterly census of employment and wages (Q
 
 ## PRIORITY TODO
 - Allow interactive costs (add 'edit' icon)
-- Clean up page tab title, favicon
+- Add better favicon
 - Dropdown menu items are too small on mobile
+- Add dual/single-income toggle to CustomCostTable
+- Figure out spacing on family icon bar
 
 ## TODO
 - Download/scrape MIT Living wage estimates for particular county - set up a script to do this
