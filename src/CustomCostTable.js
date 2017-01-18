@@ -3,17 +3,23 @@ import React from 'react';
 // import {FormGroup, FormControl, InputGroup} from 'react-bootstrap';
 
 import FormBox from './FormBox.js';
+import CustomCostControl from './CustomCostControl.js';
 import {annualFormat, clone, objectSum} from './helpers.js';
 
 const MONTHS_PER_YEAR = 12;
 
 var CostTable = React.createClass({
-  handleUpdate: function(formKey, newValue){
-    console.log(newValue);
+  handleCostUpdate: function(formKey, newValue){
     // Sets new custom cost
     let newData = clone(this.props.data);
     newData.label = 'custom';
     newData.expenses[formKey] = newValue * MONTHS_PER_YEAR; // Costs stored as annual values
+    this.props.setCustomCosts(newData);
+  },
+  handleNumIncomeUpdate: function(newNumIncomes){
+    let newData = clone(this.props.data);
+    newData.label = 'custom';
+    newData.num_incomes = newNumIncomes;
     this.props.setCustomCosts(newData);
   },
   render: function(){
@@ -42,7 +48,7 @@ var CostTable = React.createClass({
               label={label}
               value={monthlyCost}
               upperBound={10000}
-              setCustomCost={that.handleUpdate}
+              setCustomCost={that.handleCostUpdate}
             />
           </td>
         </tr>
@@ -70,6 +76,10 @@ var CostTable = React.createClass({
           <thead>{tableHeaders}</thead>
           <tbody>{tableRows}</tbody>
         </table>
+        <CustomCostControl
+          numIncomes={tableData.num_incomes}
+          setNumIncome={this.handleNumIncomeUpdate}
+        />
       </div>
     );
   }
