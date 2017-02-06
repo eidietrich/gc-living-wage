@@ -58,7 +58,7 @@ var FamilyButtonBar = React.createClass({
       let activeClass = isActive ? ' active' : '';
 
       return (
-        <OverlayTrigger placement="top" overlay={item.tooltip}>
+        <OverlayTrigger placement="top" overlay={item.tooltip} trigger={['hover']}>
           <Button
             className={"family-button" + activeClass}
             key={item.key}
@@ -80,7 +80,7 @@ var FamilyButtonBar = React.createClass({
     let isActive = ('custom' === this.props.focusFamilySize)
     let activeClass = isActive ? ' active' : '';
     const editButton = (
-      <OverlayTrigger placement="top" overlay={editTooltip}>
+      <OverlayTrigger placement="top" overlay={editTooltip} trigger={['hover']}>
         <Button
           className={"family-button" + activeClass}
           onClick={this.handleEditButtonClick}>
@@ -112,7 +112,7 @@ var FamilyButtonBar = React.createClass({
       );
     });
     const dropdownButton = (
-      <OverlayTrigger placement="top" overlay={dropdownTooltip}>
+      <OverlayTrigger placement="top" overlay={dropdownTooltip} trigger={['hover']}>
         <DropdownButton pullRight
           className="family-button"
           title={menuImg}
